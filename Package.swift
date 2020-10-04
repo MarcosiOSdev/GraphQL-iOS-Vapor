@@ -8,13 +8,18 @@ let package = Package(
     ],
     dependencies: [
         // 💧 A server-side Swift web framework.
-        .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0")
+        .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0"),
+        .package(name: "GraphQLKit", url: "https://github.com/alexsteinerde/graphql-kit.git", from: "2.0.0-beta.1"),
+        .package(name: "GraphiQLVapor", url: "https://github.com/alexsteinerde/graphiql-vapor.git", from: "2.0.0-beta.1"),
+
     ],
     targets: [
         .target(
             name: "App",
             dependencies: [
-                .product(name: "Vapor", package: "vapor")
+                .product(name: "Vapor", package: "vapor"),
+                "GraphiQLVapor",
+                "GraphQLKit",
             ],
             swiftSettings: [
                 // Enable better optimizations when building in Release configuration. Despite the use of

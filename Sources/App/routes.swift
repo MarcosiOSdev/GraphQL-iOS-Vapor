@@ -1,4 +1,5 @@
 import Vapor
+import GraphQLKit
 
 func routes(_ app: Application) throws {
     app.get { req in
@@ -6,6 +7,9 @@ func routes(_ app: Application) throws {
     }
 
     app.get("hello") { req -> String in
-        return "Hello, world!"
+        return "{\"text:\": \"Hello Word\"}"
     }
+    
+    app.register(graphQLSchema: Schemas.postSchema, withResolver: PostController())
+
 }
